@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Lukman Al Khakim</title>
+    <!-- CSS Internal untuk keamanan agar langsung jalan -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+    <div class="logo">LUKMAN_AKH</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#certificate">Certificate</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Icon Bulan/Dark Mode seperti di gambar -->
+        <li class="dark-mode-toggle"><i class="fas fa-moon"></i></li>
+    </ul>
+    </nav>
+    
+
+    <!-- Konten Utama -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <p class="greeting">"Avoid or just undertake it"</p>
+            <h1>Hi I'm <span id="typing"></span></h1>
+            
+            <!-- Deskripsi Persis Seperti Gambar -->
+            <p class="hero-desc">
+                Pengembang aplikasi dan web yang berfokus pada desain modern, performa tinggi, dan solusi berbasis teknologi terkini. Berpengalaman membangun aplikasi mobile, website interaktif, serta mengintegrasikan AI dan Machine Learning untuk menciptakan solusi masa depan.
+            </p>
+            
+            <!-- Tombol Persis Seperti Gambar -->
+            <div class="cta-buttons">
+                <a href="#gallery" class="btn-pill">Go to my Gallery</a>
+                <a href="#project" class="btn-pill">Explore My Projects</a>
+        
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Ganti URL ini dengan foto profilmu -->
+                    <img src="profil.jpg" alt="Profile">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+    <div class="about-card">
+        <div class="about-content">
+            <h2 class="about-title">About Me</h2>
+            <p class="about-text">
+                I'm <strong>Lukman Al Khakim</strong>, a full-stack developer passionate about building modern, high-performance applications with an intuitive user experience.
+            </p>
+            
+            <div class="about-stats">
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p>Project Finished</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3+</h3>
+                    <p>Years of Experience</p>
+                </div>
+            </div>
+            <p class="stat-subtext">Working with heart, creating with mind.</p>
+        </div>
+
+        <!-- Kartu Profil Kecil di Kanan -->
+        <div class="profile-mini-card">
+            <div class="profile-img-container">
+                <img src="https://via.placeholder.com" alt="Profile">
+            </div>
+            <div class="profile-info">
+                <h4>Full Stack</h4>
+                <p>Web Development</p>
+            </div>
+        </div>
+    </div>
+        </section>
+        
+
+        <!-- Project Section -->
+        <section id="project">
+            <h2 class="title">Projects</h2>
+            <div class="grid">
+                <div class="card"><h3>Web Design</h3><p>Membangun antarmuka modern.</p></div>
+                <div class="card"><h3>App Dev</h3><p>Aplikasi mobile responsif.</p></div>
+            </div>
+        </section>
+
+        <!-- Certificate Section -->
+        <section id="certificate">
+            <h2 class="title">Certificates</h2>
+            <div class="grid">
+                <img src="https://via.placeholder.com" class="img-item" alt="Cert 1">
+                <img src="https://via.placeholder.com" class="img-item" alt="Cert 2">
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+    <h2 class="title">My Creative Project</h2>
+    <div class="bento-grid">
+        <!-- Kotak Besar (Utama) -->
+        <div class="bento-item wide">
+            <img src="project1.jpg" alt="Project 1">
+            <div class="overlay">
+                <h3>Website Sekolah</h3>
+                <p>HTML, CSS, JavaScript, AOS</p>
+            </div>
+        </div>
+
+        <!-- Kotak Kecil -->
+        <div class="bento-item">
+            <img src="project2.jpg" alt="Project 2">
+            <div class="overlay">
+                <h3>Web Wedding</h3>
+                <p>TailwindCSS</p>
+            </div>
+        </div>
+
+        <!-- Kotak Tinggi -->
+        <div class="bento-item tall">
+            <img src="project3.jpg" alt="Project 3">
+            <div class="overlay">
+                <h3>Portfolio 2.0</h3>
+                <p>ReactJS, Framer Motion</p>
+            </div>
+        </div>
+
+        <!-- Tambahkan item lainnya sesuai kebutuhan -->
+    </div>
+        </section>
+            
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="title">Social Media</h2>
+            <div class="social-container">
+                <div class="social-card" onclick="openSocial('instagram')"><i class="fab fa-instagram"></i><span>Instagram</span></div>
+                <div class="social-card" onclick="openSocial('tiktok')"><i class="fab fa-tiktok"></i><span>TikTok</span></div>
+                <div class="social-card" onclick="openSocial('facebook')"><i class="fab fa-facebook"></i><span>Facebook</span></div>
+                <div class="social-card" onclick="openSocial('whatsapp')"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
