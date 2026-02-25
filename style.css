@@ -309,7 +309,7 @@ h1 {
 .bento-item:hover,
 .social-card:hover,
 .img-item:hover {
-    transform: translateY(-6px);
+    transform: translateY(-3px);
     box-shadow: 0 0 25px rgba(56,189,248,0.4);
 }
 
@@ -326,7 +326,7 @@ h1 {
 ========================= */
 .hidden {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(20px);
     transition: 0.9s ease;
 }
 
