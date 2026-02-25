@@ -1,0 +1,358 @@
+/* =========================
+   RESET & GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: white;
+    opacity: 0;
+    animation: pageFade 1s ease forwards;
+    background: linear-gradient(-45deg, #0b0f1a, #140d2e, #1a0b1f, #0b0f1a);
+    background-size: 400% 400%;
+    animation: pageFade 1s ease forwards, gradientMove 18s ease infinite;
+}
+
+@keyframes pageFade {
+    to { opacity: 1; }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   NAVBAR GLASS
+========================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    padding: 15px 30px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.dark-mode-toggle {
+    cursor: pointer;
+}
+
+/* =========================
+   SECTION BASE
+========================= */
+main {
+    margin-top: 120px;
+}
+
+section {
+    padding: 120px 8% 80px;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56,189,248,0.15), transparent);
+    filter: blur(120px);
+    top: -100px;
+    right: -100px;
+}
+
+.title {
+    font-size: 2rem;
+    color: #38bdf8;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+#typing {
+    color: #38bdf8;
+    border-right: 3px solid #38bdf8;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.hero-desc {
+    color: #94a3b8;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 25px rgba(56,189,248,0.4);
+}
+
+/* =========================
+   BUTTON PILL
+========================= */
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-pill {
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.btn-pill:hover {
+    background: rgba(56,189,248,0.2);
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   ABOUT CARD
+========================= */
+.about-card {
+    background: #0d0d15;
+    border: 1px solid #2d1b4e;
+    border-radius: 24px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about-text {
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.about-stats {
+    display: flex;
+    gap: 60px;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+}
+
+.stat-item p {
+    color: #94a3b8;
+}
+
+.profile-mini-card {
+    background: #1a1a2e;
+    border: 1px solid #3b2b63;
+    border-radius: 16px;
+    padding: 20px;
+    width: 200px;
+    transform: rotate(3deg);
+    transition: 0.3s;
+}
+
+.profile-mini-card:hover {
+    transform: rotate(0deg) translateY(-10px);
+}
+
+/* =========================
+   BENTO GRID
+========================= */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    grid-auto-rows: 200px;
+    gap: 20px;
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #161625;
+    border: 1px solid #2d1b4e;
+    transition: 0.3s;
+}
+
+.bento-item.wide { grid-column: span 2; }
+.bento-item.tall { grid-row: span 2; }
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.bento-item:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+}
+
+/* =========================
+   CARDS & SOCIAL
+========================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.card,
+.social-card,
+.img-item {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.social-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-card {
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* =========================
+   HOVER & PRESS EFFECT
+========================= */
+.card:hover,
+.bento-item:hover,
+.social-card:hover,
+.img-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(56,189,248,0.4);
+}
+
+.card:active,
+.bento-item:active,
+.social-card:active,
+.img-item:active {
+    transform: scale(1.06);
+    box-shadow: 0 0 40px rgba(56,189,248,0.7);
+}
+
+/* =========================
+   SCROLL ANIMATION SUPPORT
+========================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.9s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .bento-item.wide {
+        grid-column: span 1;
+    }
+
+    .bento-grid {
+        grid-auto-rows: 250px;
+    }
+}
