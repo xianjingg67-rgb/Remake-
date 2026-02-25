@@ -1,5 +1,5 @@
 /* =========================
-   TYPING ANIMATION
+   TYPING ANIMATION (LEBIH HALUS)
 ========================= */
 const text = "Lukman Al Khakim";
 let i = 0;
@@ -19,21 +19,21 @@ function playTyping() {
 
     if (i === text.length) {
         deleting = true;
-        setTimeout(playTyping, 2000);
+        setTimeout(playTyping, 1500);
         return;
     }
 
     if (i === 0 && deleting) {
         deleting = false;
-        setTimeout(playTyping, 500);
+        setTimeout(playTyping, 400);
         return;
     }
 
-    setTimeout(playTyping, deleting ? 80 : 120);
+    setTimeout(playTyping, deleting ? 60 : 100);
 }
 
 /* =========================
-   SCROLL REVEAL
+   SCROLL REVEAL (LEBIH KECIL)
 ========================= */
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -41,7 +41,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.add("show");
         }
     });
-}, { threshold: 0.2 });
+}, { threshold: 0.15 });
 
 function initScrollReveal() {
     document.querySelectorAll("section, .card, .bento-item, .img-item, .social-card")
@@ -52,7 +52,7 @@ function initScrollReveal() {
 }
 
 /* =========================
-   RIPPLE EFFECT
+   RIPPLE EFFECT (LEBIH KECIL)
 ========================= */
 function initRippleEffect() {
     document.querySelectorAll(".card, .bento-item, .social-card, .img-item")
@@ -61,7 +61,7 @@ function initRippleEffect() {
             element.addEventListener("click", function(e) {
 
                 const circle = document.createElement("span");
-                const diameter = Math.max(this.clientWidth, this.clientHeight);
+                const diameter = Math.min(this.clientWidth, this.clientHeight) * 0.6;
                 const radius = diameter / 2;
 
                 circle.style.width = circle.style.height = `${diameter}px`;
@@ -69,9 +69,9 @@ function initRippleEffect() {
                 circle.style.top = `${e.offsetY - radius}px`;
                 circle.style.position = "absolute";
                 circle.style.borderRadius = "50%";
-                circle.style.background = "rgba(56,189,248,0.5)";
+                circle.style.background = "rgba(56,189,248,0.35)";
                 circle.style.transform = "scale(0)";
-                circle.style.animation = "rippleAnim 0.6s linear";
+                circle.style.animation = "rippleAnim 0.5s ease-out";
 
                 this.style.position = "relative";
                 this.style.overflow = "hidden";
@@ -80,13 +80,13 @@ function initRippleEffect() {
 
                 setTimeout(() => {
                     circle.remove();
-                }, 600);
+                }, 500);
             });
         });
 }
 
 /* =========================
-   NAVBAR AUTO HIDE
+   NAVBAR AUTO HIDE (LEBIH HALUS)
 ========================= */
 let lastScroll = 0;
 const navbar = document.querySelector("nav");
@@ -94,42 +94,14 @@ const navbar = document.querySelector("nav");
 window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
 
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        navbar.style.top = "-100px";
+    if (currentScroll > lastScroll && currentScroll > 120) {
+        navbar.style.top = "-80px";
     } else {
         navbar.style.top = "20px";
     }
 
     lastScroll = currentScroll;
 });
-
-/* =========================
-   PARALLAX LIGHT EFFECT
-========================= */
-window.addEventListener("scroll", () => {
-    const sections = document.querySelectorAll("section");
-    sections.forEach(section => {
-        const speed = 0.15;
-        const yPos = -(window.scrollY * speed);
-        section.style.backgroundPosition = `center ${yPos}px`;
-    });
-});
-
-/* =========================
-   SOCIAL LINKS
-========================= */
-function openSocial(name) {
-    const links = {
-        instagram: "https://instagram.com/usernamekamu",
-        tiktok: "https://tiktok.com/@usernamekamu",
-        facebook: "https://facebook.com/usernamekamu",
-        whatsapp: "https://wa.me/628xxxxxxxxxx"
-    };
-
-    if (links[name]) {
-        window.open(links[name], "_blank");
-    }
-}
 
 /* =========================
    INIT
