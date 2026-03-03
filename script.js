@@ -1,113 +1,53 @@
-/* =========================
-   TYPING ANIMATION (LEBIH HALUS)
-========================= */
-const text = "Lukman Al Khakim";
-let i = 0;
+// MULTI TEXT TYPING
+const words = [
+"Lukman Al Khakim",
+"Full Stack Developer",
+"Graphic Designer"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
 let deleting = false;
 
-function playTyping() {
-    const target = document.getElementById("typing");
-    if (!target) return;
+function typingEffect() {
+const target = document.getElementById("typing");
+if (!target) return;
 
-    if (!deleting) {
-        target.textContent = text.slice(0, i + 1);
-        i++;
-    } else {
-        target.textContent = text.slice(0, i - 1);
-        i--;
-    }
+const current = words[wordIndex];
 
-    if (i === text.length) {
-        deleting = true;
-        setTimeout(playTyping, 1500);
-        return;
-    }
-
-    if (i === 0 && deleting) {
-        deleting = false;
-        setTimeout(playTyping, 400);
-        return;
-    }
-
-    setTimeout(playTyping, deleting ? 60 : 100);
+if (!deleting) {
+target.textContent = current.slice(0, charIndex + 1);
+charIndex++;
+} else {
+target.textContent = current.slice(0, charIndex - 1);
+charIndex--;
 }
 
-/* =========================
-   SCROLL REVEAL (LEBIH KECIL)
-========================= */
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-}, { threshold: 0.15 });
+let speed = deleting ? 70 : 120;
 
-function initScrollReveal() {
-    document.querySelectorAll("section, .card, .bento-item, .img-item, .social-card")
-        .forEach(el => {
-            el.classList.add("hidden");
-            observer.observe(el);
-        });
+if (charIndex === current.length) {
+deleting = true;
+speed = 2000;
+} else if (charIndex === 0) {
+deleting = false;
+wordIndex = (wordIndex + 1) % words.length;
+speed = 500;
 }
 
-/* =========================
-   RIPPLE EFFECT (LEBIH KECIL)
-========================= */
-function initRippleEffect() {
-    document.querySelectorAll(".card, .bento-item, .social-card, .img-item")
-        .forEach(element => {
-
-            element.addEventListener("click", function(e) {
-
-                const circle = document.createElement("span");
-                const diameter = Math.min(this.clientWidth, this.clientHeight) * 0.6;
-                const radius = diameter / 2;
-
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${e.offsetX - radius}px`;
-                circle.style.top = `${e.offsetY - radius}px`;
-                circle.style.position = "absolute";
-                circle.style.borderRadius = "50%";
-                circle.style.background = "rgba(56,189,248,0.35)";
-                circle.style.transform = "scale(0)";
-                circle.style.animation = "rippleAnim 0.5s ease-out";
-
-                this.style.position = "relative";
-                this.style.overflow = "hidden";
-
-                this.appendChild(circle);
-
-                setTimeout(() => {
-                    circle.remove();
-                }, 500);
-            });
-        });
+setTimeout(typingEffect, speed);
 }
 
-/* =========================
-   NAVBAR AUTO HIDE (LEBIH HALUS)
-========================= */
-let lastScroll = 0;
-const navbar = document.querySelector("nav");
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll(".reveal");
 
 window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll && currentScroll > 120) {
-        navbar.style.top = "-80px";
-    } else {
-        navbar.style.top = "20px";
-    }
-
-    lastScroll = currentScroll;
+reveals.forEach(el => {
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+if (elementTop < windowHeight - 100) {
+el.classList.add("active");
+}
+});
 });
 
-/* =========================
-   INIT
-========================= */
-document.addEventListener("DOMContentLoaded", () => {
-    playTyping();
-    initScrollReveal();
-    initRippleEffect();
-});
+document.addEventListener("DOMContentLoaded", typingEffect);
